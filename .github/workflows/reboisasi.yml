@@ -1,0 +1,40 @@
+name: Reboisasi
+
+on:
+  schedule:
+    #- cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  reforestation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set global directory
+        run: git config --global --add safe.directory /github/workspace
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+
+      - name: Modify last update
+        run: |
+          d=`date +"Year: %Y, Month: %m, Day: %d | Hour: %H Minute: %M Seconds: %S"`
+          echo $d > LAST_UPDATED
+      - name: Commit changes
+        run: |
+          git config --local user.email "lendradx@gmail.com"
+          git config --local user.name "lendradxx"
+          git add LAST_UPDATED
+          arr[0]="feat: 🎉 reboisasi"
+          arr[1]="feat: 🌳 reboisasi"
+          arr[2]="feat: ✅ reboisasi"
+          arr[3]="feat: 🌲 reboisasi"
+          rand=$[$RANDOM % ${#arr[@]}]
+          git commit -m "${arr[$rand]}"
+      - name: GitHub Push
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          force: true
+          branch: main
+          directory: '.'
+          github_token: ${{ secrets.GH_TOKEN }}
