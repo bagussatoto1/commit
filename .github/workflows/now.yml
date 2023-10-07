@@ -34,22 +34,22 @@ jobs:
       
       - name: Set Config
         run: |
-          git config --local user.email "${{bagusbudisatoto2001@gmail.com}}"
-          git config --local user.name "${{bagussatoto}}"
+          git config --local user.email "${{ github.event.inputs.email }}"
+          git config --local user.name "${{ github.event.inputs.username }}"
           git add -A
           
-          arr[0]="chore(bot): 😂 senyum"
-          arr[1]="chore(bot): 😱 kaget"
-          arr[2]="chore(bot): 👿 marah"
-          arr[3]="chore(bot): 💩 tai"
-          arr[4]="chore(bot): 🙏 tepuk"
-          arr[5]="chore(bot): 🙈 tutup muka"
-          arr[6]="chore(bot): 🐐 kambing"
-          arr[7]="chore(bot): 🤖 robot"
-          arr[8]="chore(bot): 🟩 hijau"
-          arr[9]="chore(bot): 👻 hantu"
+          arr[0]="chore(bot): 😂 auto commit"
+          arr[1]="chore(bot): 😱 auto commit"
+          arr[2]="chore(bot): 👿 auto commit"
+          arr[3]="chore(bot): 💩 auto commit"
+          arr[4]="chore(bot): 🙏 auto commit"
+          arr[5]="chore(bot): 🙈 auto commit"
+          arr[6]="chore(bot): 🐐 auto commit"
+          arr[7]="chore(bot): 🤖 auto commit"
+          arr[8]="chore(bot): 🟩 auto commit"
+          arr[9]="chore(bot): 👻 auto commit"
           
-          rand=$[$RANDOM % ${#arr[@bagussatoto]}]
+          rand=$[$RANDOM % ${#arr[@]}]
           
           git commit -m "${arr[$rand]}"
 
